@@ -1,4 +1,18 @@
-li{
+li
+{
   border-bottom: 1px solid black;
 
+}
+#posts
+{
+    margin-top: 180px;
+}
+#detail
+{
+  color: darkcyan;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 10px;
+  position: fixed;
+  width:100%;
 }
