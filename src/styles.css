@@ -3,9 +3,27 @@ li
   border-bottom: 1px solid black;
 
 }
-#posts
+#posts,#comments
 {
     margin-top: 180px;
+}
+#js-posts{
+  width:373px;
+  border:1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+
+}
+.container{
+  margin-left: 36%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width:500px;
+  height: 150px;
+  background-color: #eee;
+  padding-top: 30px;
+  padding-left: 70px;
+
 }
 #detail
 {

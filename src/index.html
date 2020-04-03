@@ -5,14 +5,17 @@
     <title>Seytech Homework</title>
   </head>
   <body>
-    <button type="submit"  id='js-posts'name="button">Get all posts</button>
-    <button type="submit"  id='js-comments'name="button">Get all comments</button>
+    <div class="container">
+      <button type="submit"  id='js-posts'name="button">Get all posts</button></br>
+      <input type="text" id="inputId" />
+      <button type="submit"  id='js-comments'name="button">Get comments by Id</button>
+   </div>
    <div id='detail'>
      <h3>Title: <span id='title'></span></h3>
      <p>UserId: <span id='user'></span></p>
      <p>Body: <span id='body'></span></p>
    </div>
    <ul id='posts'></ul>
-
+   <ul id='comments'></ul>
   </body>
 </html>

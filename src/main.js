@@ -6,41 +6,84 @@ import './styles.css';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const generateButton = document.getElementById('js-posts');
-  const generatePhotos = document.getElementById('js-comments');
-  generateButton.addEventListener('click', getData);
-  generatePhotos.addEventListener('click',getData1);
+  // const searchById = document.getElementById('js-comments');
+  // generatePosts.addEventListener('click', getComments);
+  const generatePosts = document.getElementById('js-posts');
+  generatePosts.addEventListener('click', getPostsData);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const searchById = document.getElementById('js-comments');
+  searchById.addEventListener('click', getCommentsById);
 
+});
 
-let getData = () =>
+let getCommentsById = () =>
+{
+  const givenId = document.getElementById('inputId').value;
+  console.log(givenId);
+  let url = `https://jsonplaceholder.typicode.com/posts/${givenId}/comments`;
+  console.log(url);
+  fetch(url)
+  .then((data) => data.json())
+  .then((data) => getComments(data));
+}
+
+let getPostsData = () =>
 {
   fetch('https://jsonplaceholder.typicode.com/posts')
   .then((data) => data.json())
   .then((data) => getPosts(data));
 
 }
-let getData1 = () =>
-{
-  fetch('https://jsonplaceholder.typicode.com/photos')
-  .then((data) => data.json())
-  .then((data) => getPhotos(data));
 
+
+
+
+let getComments = (comments) =>
+{
+  let index = 0;
+  let comment;
+  let ul = document.getElementById('comments');
+  while(index<comments.length)
+  {
+    comment = comments[index];
+    let li = document.createElement('li');
+    let postId = document.createElement('p');
+    let id = document.createElement('p');
+    let name = document.createElement('p');
+    let email = document.createElement('p');
+    let body = document.createElement('p');
+    postId.innerText = "PostId: "+ comment.postId;
+    id.innerText = "Id: " + comment.id;
+    name.innerText = "Name: " + comment.name;
+    email.innerText = "Email: " + comment.email;
+    body.innerText = "Body: " + comment.body;
+    li.appendChild(postId);
+    li.appendChild(id);
+    li.appendChild(name);
+    li.appendChild(email);
+    li.appendChild(body);
+    ul.appendChild(li);
+    index++;
+
+
+
+  }
 }
 /*Get photos*/
 
-let getPhotos = (data) =>
-{
-    for(let idx=0; idx<100; idx++)
-    {
-      let picture = data[idx];
-      let imgTag = document.createElement('img');
-      imgTag.src = picture.thumbnailUrl;
-      document.body.appendChild(imgTag);
-    }
-
-}
+// let getPhotos = (data) =>
+// {
+//     for(let idx=0; idx<100; idx++)
+//     {
+//       let picture = data[idx];
+//       let imgTag = document.createElement('img');
+//       imgTag.src = picture.thumbnailUrl;
+//       document.body.appendChild(imgTag);
+//     }
+//
+// }
 
 /*Get Posts*/
 
